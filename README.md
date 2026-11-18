@@ -7,3 +7,4 @@ Cloudflare Workers + Groq দিয়ে বানানো পাবলিক 
 
 API key এই রিপোজিটরিতে রাখা হয়নি। Cloudflare-এ Worker-এর
 Settings → Variables and Secrets থেকে `GROQ_API_KEY` নামে Secret সেট করতে হবে।
+.
