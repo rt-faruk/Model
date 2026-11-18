@@ -1,7 +1,7 @@
 // পাবলিক বাংলা চ্যাটবট (Cloudflare Workers + Groq)
 // API key কোডে নেই: Worker-এর Settings > Variables and Secrets-এ GROQ_API_KEY নামে সেট করুন।
 
-const MODEL = "llama-3.3-70b-versatile";
+const MODEL = "openai/gpt-oss-120b";
 const SYSTEM_PROMPT =
   "তুমি একটি সহায়ক বাংলা চ্যাটবট। ব্যবহারকারী যে ভাষায় লেখে (বাংলা, ইংরেজি বা বাংলিশ), সেই ভাষাতেই সহজ ও পরিষ্কারভাবে উত্তর দাও। উত্তর ছোট ও কাজের রাখো। না জানলে সোজা বলো যে জানো না।";
 
