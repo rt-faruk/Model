@@ -103,6 +103,9 @@ export default {
           .map((m) => ({ role: m.role, content: String(m.content).slice(0, 2000) }));
 
         if (messages.length === 0) return json({ error: "empty" }, 400);
+        if (!env.GROQ_API_KEY) {
+          return json({ reply: "[ডিবাগ] সার্ভারে GROQ_API_KEY সেট করা নেই।" });
+        }
 
         const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
           method: "POST",
@@ -117,7 +120,10 @@ export default {
           }),
         });
 
-        if (!res.ok) return json({ error: "upstream" }, 502);
+        if (!res.ok) {
+          const detail = (await res.text()).slice(0, 300);
+          return json({ reply: "[ডিবাগ] Groq error " + res.status + ": " + detail });
+        }
         const data = await res.json();
         return json({ reply: data.choices[0].message.content });
       } catch (e) {
